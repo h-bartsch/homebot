@@ -1,0 +1,16 @@
+This project utilizes the following packages:
+
+Sourced from github...
+gmapping - used to leverage SLAM to construct a map of the environment and help the robot navigate
+turtlebot_teleop - used to control the turtlebot with keyboard inputs
+turtlebot_rviz_launchers - used to launch a preconfigured rviz file. this was dropped in home_service.sh in favor of an rviz file configured with markers.
+turtlebot_gazebo - used to deploy a turtlebot in my world
+
+Additionally...
+pick_objects - this package contains a cpp program that provides navigation instructions to the turtlebot. the program sends coordinates to the robot and the robot navigates the provided map, moving towards the goal. once the robot arrives at the goal, it repeats the instructions for a point on the other side of the map. to navigate, the robot uses dijkstra's algorithm - moving in the general direction of the goal while taking nodes around obstacles.
+
+add_markers - this packages also contains a cpp program. this one is used to simulate the robot 'picking up' and 'dropping off' a marker at each of the goal points described above. it works by receiving the odom messages from the robot. once the robot is within a range of the marker spot, it 'adds' or 'deletes' the marker in the rviz space. the rviz launch config file is located within this packages for quick reference.
+
+To complement the above packages...
+map - contains all of the mapping information required for navigation
+scripts - contains various scripts used to run different configurations of the program
